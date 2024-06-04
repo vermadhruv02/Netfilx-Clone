@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
-import cards_data from "../../assets/cards/Cards_data";
 import { Link } from "react-router-dom";
 
 const TitleCards = ({ title, category }) => {
@@ -13,8 +12,7 @@ const TitleCards = ({ title, category }) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjNjZDJhZmM5ZTk3YzRmYTkwYWIwNDZkNGI4NTkxNSIsInN1YiI6IjY2NGQ5YmQ2ZmYzOWVhZmJlYWNhYTkxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XHuKi6bbmWEFBgiT7F0Pf0Qv265itj1jSy4iChhHIMA",
+      Authorization: import.meta.env.REACT_APP_FIREBASE_THE_MOVIE_DB,
     },
   };
 
@@ -28,7 +26,7 @@ const TitleCards = ({ title, category }) => {
 
     fetch(url, options)
       .then((res) => res.json())
-      .then((json) => {setApiData(json.results); console.log(json.results);})
+      .then((json) => {setApiData(json.results); })
       .catch((err) => console.error("error:" + err));
   }, []);
 
